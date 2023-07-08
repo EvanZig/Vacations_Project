@@ -1,0 +1,69 @@
+$brown: #7a5d3c;
+
+@mixin chat-input-styles {
+    &:focus,
+    &:hover {
+        box-shadow: 0px 0px 13px 0px $brown !important;
+        border-color: white !important;
+    }
+}
+
+.Sign-In {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px);
+    width: calc(100vw - 60px);
+}
+
+.title {
+    color: $brown;
+    text-align: center;
+    font-size: 30px;
+}
+
+.formInput {
+    @include chat-input-styles;
+    min-width: 400px;
+}
+
+.ant-input-affix-wrapper-focused {
+    box-shadow: 0px 0px 13px 0px $brown !important;
+    border-color: white !important;
+}
+
+.ant-btn-primary {
+    background-color: $brown;
+    opacity: 0.8;
+    &:hover,
+    &:focus {
+        opacity: 1;
+        background-color: $brown !important;
+    }
+}
+
+.ant-btn {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+}
+
+.ant-btn-default {
+    &:hover,
+    &:focus {
+        border-color: $brown !important;
+        color: $brown !important;
+    }
+}
+.formItem {
+    margin-top: 50px;
+}
+
+.ant-input {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-left: 70px;
+}
