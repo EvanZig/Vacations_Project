@@ -12,7 +12,8 @@ root.render(
     <React.StrictMode>
         {/* <App /> */}
         {/* <UsersList /> */}
-        <UserCreation />
+        {/* <UserCreation /> */}
+        <VacationsStatus />
     </React.StrictMode>
 )
 
