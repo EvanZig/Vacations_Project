@@ -1,6 +1,5 @@
 import { Button, Input, Form } from 'antd'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons'
-import './styles/login.scss'
 
 function App() {
     return (

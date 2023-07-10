@@ -67,3 +67,16 @@ $brown: #7a5d3c;
     justify-content: center;
     margin-left: 70px;
 }
+
+.ant-picker {
+    @include chat-input-styles;
+    border: none;
+}
+
+.textarea-reason {
+    margin-top: 20px;
+    width: 300px;
+    &:hover {
+        @include chat-input-styles;
+    }
+}

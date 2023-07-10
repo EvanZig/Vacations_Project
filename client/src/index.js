@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals'
 import VacationsStatus from './employee/VacationsStatus'
 import UsersList from './manager/UsersList'
 import UserCreation from './manager/UserCreation'
+import VacationRequest from './employee/VacationRequest'
+import './styles/general.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -13,7 +15,8 @@ root.render(
         {/* <App /> */}
         {/* <UsersList /> */}
         {/* <UserCreation /> */}
-        <VacationsStatus />
+        {/* <VacationsStatus /> */}
+        <VacationRequest />
     </React.StrictMode>
 )
 
