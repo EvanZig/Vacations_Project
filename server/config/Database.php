@@ -15,13 +15,12 @@ class Database
             echo "Connection failed: " . $e->getMessage();
         }
     }
-    public function query($query)
+    public function query($query, $parameters = array())
     {
         $statement = $this->connection->prepare($query);
-        $statement->execute();
+        $statement->execute($parameters);
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);
-
     }
 }
 
@@ -29,6 +28,6 @@ $db = new Database();
 
 $users = $db->query("SELECT * from users");
 
-foreach ($users as $user) {
-    echo "<li>" . $user['role'] . "</li>";
-}
+// foreach ($users as $user) {
+//     echo "<li>" . $user['role'] . "</li>";
+// }

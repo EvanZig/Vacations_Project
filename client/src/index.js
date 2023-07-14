@@ -1,22 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles/index.scss'
-import App from './App'
 import reportWebVitals from './reportWebVitals'
-import VacationsStatus from './employee/VacationsStatus'
-import UsersList from './manager/UsersList'
-import UserCreation from './manager/UserCreation'
-import VacationRequest from './employee/VacationRequest'
 import './styles/general.scss'
+import MyRoutes from './Routes/MyRoutes'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <React.StrictMode>
-        <App />
-        {/* <UsersList /> */}
-        {/* <UserCreation /> */}
-        {/* <VacationsStatus /> */}
-        {/* <VacationRequest /> */}
+        <MyRoutes />
     </React.StrictMode>
 )
 
