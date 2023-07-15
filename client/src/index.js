@@ -4,11 +4,14 @@ import './styles/index.scss'
 import reportWebVitals from './reportWebVitals'
 import './styles/general.scss'
 import MyRoutes from './Routes/MyRoutes'
+import AuthProvider from './Routes/context'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <React.StrictMode>
-        <MyRoutes />
+        <AuthProvider>
+            <MyRoutes />
+        </AuthProvider>
     </React.StrictMode>
 )
 

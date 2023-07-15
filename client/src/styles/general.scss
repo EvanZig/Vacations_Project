@@ -80,3 +80,10 @@ $brown: #7a5d3c;
         @include chat-input-styles;
     }
 }
+
+.logoutButton {
+    background-color: red;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}

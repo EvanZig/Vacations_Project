@@ -27,11 +27,20 @@ function App() {
                 const { role } = response.data
                 authContext.setAuthStatus('LoggedIn')
                 authContext.setRole(role)
+                window.localStorage.setItem('role', role)
+                window.localStorage.setItem('status', 'LoggedIn')
                 console.log(authContext.role)
             })
             .catch((error) => {
                 console.error(error)
             })
+    }
+
+    const handleKeyPress = (event) => {
+        console.log(event.keyCode)
+        if (event.keyCode === 13) {
+            submitLogin()
+        }
     }
 
     return (
@@ -74,7 +83,11 @@ function App() {
                     />
                 </Form.Item>
                 <div className="footer" style={{ marginTop: '10px' }}>
-                    <Button type="primary" onClick={submitLogin}>
+                    <Button
+                        type="primary"
+                        onClick={submitLogin}
+                        onKeyUp={handleKeyPress}
+                    >
                         LOGIN
                     </Button>
                 </div>
