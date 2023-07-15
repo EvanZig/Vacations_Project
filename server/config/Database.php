@@ -25,9 +25,3 @@ class Database
 }
 
 $db = new Database();
-
-$users = $db->query("SELECT * from users");
-
-// foreach ($users as $user) {
-//     echo "<li>" . $user['role'] . "</li>";
-// }

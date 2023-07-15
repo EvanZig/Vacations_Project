@@ -20,35 +20,25 @@ const columns = [
     },
 ]
 
-const dataSource = [
-    {
-        key: '1',
-        name: 'Mike',
-        email: 32,
-        dev: 'delete',
-    },
-    {
-        key: '2',
-        name: 'John',
-        email: 42,
-        dev: (
-            <>
-                <a>edit</a> <a>delete</a>
-            </>
-        ),
-    },
-]
-
 export default function VacationsStatus() {
     const [vacationRequests, setVacationRequests] = useState([])
 
     useEffect(() => {
         axios
-            .get('http://localhost:5000/show')
+            .get('http://localhost:8888/allEmployees')
             .then((response) => {
                 console.log(response.data)
-                const parsedData = JSON.parse(response.data)
-                setVacationRequests(parsedData)
+                const formattedData = response.data.map((item, index) => ({
+                    key: index + 1,
+                    name: item.username,
+                    email: item.email,
+                    dev: (
+                        <>
+                            <a>edit</a> <a>delete</a>
+                        </>
+                    ),
+                }))
+                setVacationRequests(formattedData)
             })
             .catch((error) => {
                 console.error(error)
@@ -62,7 +52,7 @@ export default function VacationsStatus() {
             </h2>
             <Button>Create User</Button>
             <Table
-                dataSource={dataSource}
+                dataSource={vacationRequests}
                 columns={columns}
                 pagination={false}
             />
