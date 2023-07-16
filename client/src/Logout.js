@@ -12,7 +12,7 @@ export default function Logout() {
         authContext.setAuthStatus('LoggedOut')
     }
     return (
-        <div className="">
+        <div>
             <Link to="/">
                 <Button onClick={handleLogout} className="logoutButton">
                     Logout

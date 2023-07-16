@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { DatePicker, Input, Button } from 'antd'
 import axios from 'axios'
 import { AuthContext } from '../Routes/context'
+import Return from '../Return'
 
 const { TextArea } = Input
 
@@ -55,6 +56,7 @@ export default function VacationRequest() {
                 minHeight: '90vh',
             }}
         >
+            <Return />
             <div style={{ width: '400px' }}>
                 <h2 style={{ textAlign: 'center' }}>Vacation Request</h2>
                 <div style={{ marginTop: '20px' }}>

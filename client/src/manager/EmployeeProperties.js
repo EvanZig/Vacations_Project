@@ -3,6 +3,7 @@ import { Button, Input, Form } from 'antd'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import Return from '../Return'
 
 export default function EmployeeProperties() {
     const [userProperties, setUserProperties] = useState({
@@ -68,6 +69,7 @@ export default function EmployeeProperties() {
                 width: '99vw',
             }}
         >
+            <Return />
             <div style={{ width: '600px' }}>
                 <h2 style={{ textAlign: 'center' }}>User properties</h2>
                 <Form
