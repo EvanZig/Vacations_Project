@@ -1,13 +1,53 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { DatePicker, Input, Button } from 'antd'
+import axios from 'axios'
+import { AuthContext } from '../Routes/context'
 
 const { TextArea } = Input
 
 export default function VacationRequest() {
-    const onChange = (date, dateString) => {
-        console.log(date, dateString)
+    const [dateStrings, setDateStrings] = useState({
+        dateFrom: '',
+        dateTo: '',
+        reason: '',
+    })
+    const authContext = useContext(AuthContext)
+
+    const onChange = (identifier, value) => {
+        setDateStrings((prevState) => ({
+            ...prevState,
+            [identifier]: value,
+        }))
     }
 
+    const onDateChange = (identifier, date, dateString) => {
+        onChange(identifier, dateString)
+    }
+
+    const request = () => {
+        const currentDate = new Date()
+        const formattedCurrentDate = currentDate.toISOString().slice(0, 10)
+
+        const requestData = {
+            ...dateStrings,
+            currentDate: formattedCurrentDate,
+        }
+
+        console.log(requestData)
+        axios
+            .post('http://localhost:8888/request', requestData, {
+                headers: {
+                    Authorization: `Bearer ${authContext.token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response.data)
+                alert('Vacation Requested Submitted')
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
     return (
         <div
             style={{
@@ -21,12 +61,18 @@ export default function VacationRequest() {
                 <h2 style={{ textAlign: 'center' }}>Vacation Request</h2>
                 <div style={{ marginTop: '20px' }}>
                     <label>Date from: </label>
-                    <DatePicker onChange={onChange} />
+                    <DatePicker
+                        onChange={(date, dateString) =>
+                            onDateChange('dateFrom', date, dateString)
+                        }
+                    />
                 </div>
                 <div style={{ marginTop: '20px' }}>
                     <label>Date to: </label>
                     <DatePicker
-                        onChange={onChange}
+                        onChange={(date, dateString) =>
+                            onDateChange('dateTo', date, dateString)
+                        }
                         style={{ marginLeft: '20px' }}
                     />
                 </div>
@@ -36,11 +82,14 @@ export default function VacationRequest() {
                         showCount
                         maxLength={100}
                         className="textarea-reason"
-                        onChange={onChange}
+                        onChange={(e) => onChange('reason', e.target.value)}
                         placeholder="Add reason"
                     />
                 </div>
-                <Button style={{ marginTop: '60px', marginLeft: '150px' }}>
+                <Button
+                    style={{ marginTop: '60px', marginLeft: '150px' }}
+                    onClick={request}
+                >
                     Request
                 </Button>
             </div>

@@ -34,6 +34,7 @@ const EmployeeRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<VacationsStatus />} />
+            <Route path="/request" element={<VacationRequest />} />
         </Routes>
     )
 }

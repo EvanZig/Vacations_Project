@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { Table, Button } from 'antd'
 import { AuthContext } from '../Routes/context'
+import { Link } from 'react-router-dom'
 
 const columns = [
     {
@@ -60,7 +61,7 @@ export default function VacationsStatus() {
                 console.log(response.data)
                 const formattedData = response.data.map((item, index) => ({
                     key: index + 1,
-                    dateSubmitted: item.submitionDate,
+                    dateSubmitted: item.submissionDate,
                     dateRequested: item.vacation_date_from,
                     totalDays: calculateDays(
                         item.vacation_date_from,
@@ -81,7 +82,9 @@ export default function VacationsStatus() {
             <h2 style={{ display: 'flex', justifyContent: 'center' }}>
                 Vacation Requests
             </h2>
-            <Button>Request vacation</Button>
+            <Link to="/request">
+                <Button>Request vacation</Button>
+            </Link>
             <Table
                 dataSource={vacationRequests}
                 columns={columns}

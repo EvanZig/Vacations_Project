@@ -87,3 +87,15 @@ $brown: #7a5d3c;
     top: 10px;
     right: 10px;
 }
+
+.notifications {
+    margin-left: 40px;
+    background-color: #ca8136;
+    height: 37px;
+    width: 40px !important;
+
+    &:hover,
+    &:focus {
+        background-color: #ca8136 !important;
+    }
+}

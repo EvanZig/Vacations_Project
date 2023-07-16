@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Table, Button } from 'antd'
 import { Link } from 'react-router-dom'
+import VacationNotifications from './VacationNotifications'
 
 const columns = [
     {
@@ -74,18 +75,21 @@ export default function EmployeeList() {
     }, [])
 
     return (
-        <div>
-            <h2 style={{ display: 'flex', justifyContent: 'center' }}>
-                List of employees
-            </h2>
-            <Link to="/employeeProperties">
-                <Button>Create Employee</Button>
-            </Link>
-            <Table
-                dataSource={employeeList}
-                columns={columns}
-                pagination={false}
-            />
-        </div>
+        <>
+            <VacationNotifications />
+            <div>
+                <h2 style={{ display: 'flex', justifyContent: 'center' }}>
+                    List of employees
+                </h2>
+                <Link to="/employeeProperties">
+                    <Button>Create Employee</Button>
+                </Link>
+                <Table
+                    dataSource={employeeList}
+                    columns={columns}
+                    pagination={false}
+                />
+            </div>
+        </>
     )
 }
