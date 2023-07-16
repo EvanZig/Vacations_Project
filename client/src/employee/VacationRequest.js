@@ -32,8 +32,6 @@ export default function VacationRequest() {
             ...dateStrings,
             currentDate: formattedCurrentDate,
         }
-
-        console.log(requestData)
         axios
             .post('http://localhost:8888/request', requestData, {
                 headers: {
