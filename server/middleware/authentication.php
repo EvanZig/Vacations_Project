@@ -7,7 +7,7 @@ use Firebase\JWT\Key;
 
 function verifyJwtToken($jwt)
 {
-    // Your secret key used to sign the JWT
+    // my secret key used to sign the JWT
     $secretKey = 'a_secret_key';
 
     try {

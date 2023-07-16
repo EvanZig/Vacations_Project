@@ -9,7 +9,8 @@ $routes = [
     '/update' => 'manager/update.php',
     '/create' => 'manager/create.php',
     '/delete' => 'manager/delete.php',
-    '/allVacations' => 'employee/allVacations.php'
+    '/allVacations' => 'employee/allVacations.php',
+    '/request' => 'employee/requestVacation.php'
 ];
 
 function missingPage()

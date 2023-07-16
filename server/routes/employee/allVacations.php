@@ -17,8 +17,6 @@ if ($userInfo === null) {
 } else {
 
     $userId = $userInfo['id'];
-    $username = $userInfo['username'];
-    $userRole = $userInfo['role'];
 
     $query = "SELECT * FROM vacationrequests WHERE user_id = ?";
     $parameters = array($userId);
