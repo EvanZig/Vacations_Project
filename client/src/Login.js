@@ -36,13 +36,6 @@ function App() {
             })
     }
 
-    const handleKeyPress = (event) => {
-        console.log(event.keyCode)
-        if (event.keyCode === 13) {
-            submitLogin()
-        }
-    }
-
     return (
         <div className="Sign-In">
             <Form
@@ -83,11 +76,7 @@ function App() {
                     />
                 </Form.Item>
                 <div className="footer" style={{ marginTop: '10px' }}>
-                    <Button
-                        type="primary"
-                        onClick={submitLogin}
-                        onKeyUp={handleKeyPress}
-                    >
+                    <Button type="primary" onClick={submitLogin}>
                         LOGIN
                     </Button>
                 </div>

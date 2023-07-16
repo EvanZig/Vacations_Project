@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import VacationsStatus from '../employee/VacationsStatus'
 import VacationRequest from '../employee/VacationRequest'
-import UserCreation from '../manager/UserCreation'
-import UsersList from '../manager/UsersList'
+import EmployeeProperties from '../manager/EmployeeProperties'
+import EmployeeList from '../manager/EmployeeList'
 import Login from '../Login'
 import AuthProvider, {
     AuthIsNotSignedIn,
@@ -17,7 +17,15 @@ import Logout from '../Logout'
 const ManagerRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<UsersList />} />
+            <Route path="/" element={<EmployeeList />} />
+            <Route
+                path="/employeeProperties"
+                element={<EmployeeProperties />}
+            />
+            <Route
+                path="/employeeProperties/:email"
+                element={<EmployeeProperties />}
+            />
         </Routes>
     )
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Table, Button } from 'antd'
+import { Link } from 'react-router-dom'
 
 const columns = [
     {
@@ -20,10 +21,23 @@ const columns = [
     },
 ]
 
-export default function VacationsStatus() {
+export default function EmployeeList() {
     const [vacationRequests, setVacationRequests] = useState([])
 
     useEffect(() => {
+        async function employeeDelete(employeeEmail) {
+            axios
+                .delete('http://localhost:8888/delete', {
+                    email: employeeEmail,
+                })
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+
         axios
             .get('http://localhost:8888/allEmployees')
             .then((response) => {
@@ -34,7 +48,13 @@ export default function VacationsStatus() {
                     email: item.email,
                     dev: (
                         <>
-                            <a>edit</a> <a>delete</a>
+                            <Link to={`/employeeProperties/${item.email}`}>
+                                edit
+                            </Link>{' '}
+                            /{' '}
+                            <a onClick={() => employeeDelete(item.email)}>
+                                delete
+                            </a>
                         </>
                     ),
                 }))
@@ -48,9 +68,11 @@ export default function VacationsStatus() {
     return (
         <div>
             <h2 style={{ display: 'flex', justifyContent: 'center' }}>
-                List of users
+                List of employees
             </h2>
-            <Button>Create User</Button>
+            <Link to="/employeeProperties">
+                <Button>Create Employee</Button>
+            </Link>
             <Table
                 dataSource={vacationRequests}
                 columns={columns}
