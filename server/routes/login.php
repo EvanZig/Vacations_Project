@@ -1,5 +1,10 @@
 <?php
 
+// Include the JWT library
+require_once 'vendor/autoload.php';
+
+use Firebase\JWT\JWT;
+
 // Retrieve the raw JSON payload
 $json = file_get_contents('php://input');
 
@@ -23,10 +28,23 @@ if (count($result) === 1) {
     // Verify the password
     if (!empty($storedPassword) && $password === $storedPassword) {
         // Authentication successful
+
+        // Create a payload for the JWT
+        $payload = array(
+            'id' => $result[0]['id'],
+            'username' => $result[0]['username'],
+            'role' => $result[0]['role'],
+            'exp' => time() + (60 * 60)
+        );
+        // Generate the JWT
+        $jwt = JWT::encode($payload, 'a_secret_key', 'HS256');
+
+        // Send the JWT back as the response
         $response = array(
             'success' => true,
             'message' => 'Login successful',
-            'role' => $role
+            'role' => $role,
+            'token' => $jwt
         );
         http_response_code(200);
     } else {

@@ -25,11 +25,13 @@ function App() {
             .post('http://localhost:8888/login', loginCredentials)
             .then((response) => {
                 const { role } = response.data
+                const { token } = response.data
                 authContext.setAuthStatus('LoggedIn')
                 authContext.setRole(role)
+                authContext.setToken(token)
                 window.localStorage.setItem('role', role)
                 window.localStorage.setItem('status', 'LoggedIn')
-                console.log(authContext.role)
+                window.localStorage.setItem('token', token)
             })
             .catch((error) => {
                 console.error(error)

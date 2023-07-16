@@ -34,6 +34,7 @@ export const IsNotManager = ({ children }) => {
 
 export const AuthProvider = ({ children }) => {
     const [authStatus, setAuthStatus] = useState('LoggedOut')
+    const [token, setToken] = React.useState('')
     const [role, setRole] = useState('')
 
     const state = {
@@ -41,6 +42,8 @@ export const AuthProvider = ({ children }) => {
         setAuthStatus,
         role,
         setRole,
+        token,
+        setToken,
     }
 
     return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>

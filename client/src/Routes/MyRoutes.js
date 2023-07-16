@@ -41,13 +41,16 @@ const EmployeeRoutes = () => {
 export default function MyRoutes() {
     const authContext = useContext(AuthContext)
 
+    // session info
     useEffect(() => {
         try {
             const isAuthenticated = localStorage.getItem('status')
             authContext.setAuthStatus(isAuthenticated)
             authContext.setRole(localStorage.getItem('role'))
+            authContext.setToken(localStorage.getItem('token'))
         } catch (e) {}
     }, [authContext])
+
     return (
         <BrowserRouter>
             <AuthIsNotSignedIn>

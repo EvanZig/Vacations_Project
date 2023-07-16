@@ -22,7 +22,7 @@ const columns = [
 ]
 
 export default function EmployeeList() {
-    const [vacationRequests, setVacationRequests] = useState([])
+    const [employeeList, setEmployeeList] = useState([])
 
     async function employeeDelete(employeeEmail) {
         console.log(employeeEmail)
@@ -34,7 +34,7 @@ export default function EmployeeList() {
             })
             .then((response) => {
                 console.log(response)
-                setVacationRequests((prevVacationRequests) =>
+                setEmployeeList((prevVacationRequests) =>
                     prevVacationRequests.filter(
                         (item) => item.email !== employeeEmail
                     )
@@ -47,7 +47,7 @@ export default function EmployeeList() {
 
     useEffect(() => {
         axios
-            .delete('http://localhost:8888/allEmployees')
+            .get('http://localhost:8888/allEmployees')
             .then((response) => {
                 console.log(response.data)
                 const formattedData = response.data.map((item, index) => ({
@@ -66,7 +66,7 @@ export default function EmployeeList() {
                         </>
                     ),
                 }))
-                setVacationRequests(formattedData)
+                setEmployeeList(formattedData)
             })
             .catch((error) => {
                 console.error(error)
@@ -82,7 +82,7 @@ export default function EmployeeList() {
                 <Button>Create Employee</Button>
             </Link>
             <Table
-                dataSource={vacationRequests}
+                dataSource={employeeList}
                 columns={columns}
                 pagination={false}
             />
