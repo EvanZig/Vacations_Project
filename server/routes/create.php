@@ -8,11 +8,11 @@ $updateData = json_decode($json, true);
 $username = $updateData['name'];
 $email = $updateData['email'];
 $password = $updateData['password'];
-$user = $updateData['user'];
+$role = 'employee';
 
 // Prepare and execute the query to check if the user exists
-$query = "UPDATE users SET username = ?, password = ?, email = ? WHERE email = ?";
-$parameters = array($username, $password, $email, $user);
+$query = "INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, ?)";
+$parameters = array($username, $password, $email, $role);
 $result = $db->query($query, $parameters);
 
 header('Content-Type: application/json');

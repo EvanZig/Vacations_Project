@@ -1,6 +1,7 @@
 import { Button } from 'antd'
 import React, { useContext } from 'react'
 import { AuthContext } from './Routes/context'
+import { Link } from 'react-router-dom'
 
 export default function Logout() {
     const authContext = useContext(AuthContext)
@@ -12,9 +13,11 @@ export default function Logout() {
     }
     return (
         <div className="">
-            <Button onClick={handleLogout} className="logoutButton">
-                Logout
-            </Button>
+            <Link to="/">
+                <Button onClick={handleLogout} className="logoutButton">
+                    Logout
+                </Button>
+            </Link>
         </div>
     )
 }

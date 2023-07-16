@@ -49,8 +49,6 @@ export default function EmployeeProperties() {
                     user: userProperties.user,
                 })
                 .then((response) => {
-                    console.log('user updated')
-                    console.log(userProperties)
                     console.log(response.data)
                 })
                 .catch((error) => {
@@ -92,6 +90,7 @@ export default function EmployeeProperties() {
                             className="formInput"
                             onChange={handleInputChange}
                             name="name"
+                            value={userProperties.name}
                         />
                     </Form.Item>
                     <Form.Item
@@ -124,6 +123,7 @@ export default function EmployeeProperties() {
                                 )
                             }
                             className="formInput"
+                            value={userProperties.password}
                             name="password"
                             onChange={handleInputChange}
                         />
