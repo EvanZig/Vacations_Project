@@ -7,6 +7,16 @@ export default function VacationNotifications() {
     const [isHovered, setIsHovered] = useState(false)
     const [vacationRequests, setVacationRequests] = useState([])
 
+    const [open, setOpen] = useState(false)
+    const handleMenuClick = (e) => {
+        if (e.key === '3') {
+            setOpen(false)
+        }
+    }
+    const handleOpenChange = (flag) => {
+        setOpen(flag)
+    }
+
     const handleHover = (hoverState) => {
         setIsHovered(hoverState)
     }
@@ -85,15 +95,12 @@ export default function VacationNotifications() {
     return (
         <div>
             <Dropdown
+                onOpenChange={handleOpenChange}
+                open={open}
                 overlay={
                     <Menu style={{ minHeight: '80px' }}>
                         {vacationRequests.map((item) => (
-                            <Menu.Item
-                                key={item.key}
-                                icon={item.icon}
-                                disabled={item.disabled}
-                                danger={item.danger}
-                            >
+                            <Menu.Item key={item.key} onClick={() => {}}>
                                 {item.label}
                             </Menu.Item>
                         ))}
