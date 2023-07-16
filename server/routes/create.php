@@ -3,11 +3,11 @@
 $json = file_get_contents('php://input');
 
 // Decode the JSON data into an associative array
-$updateData = json_decode($json, true);
+$createData = json_decode($json, true);
 
-$username = $updateData['name'];
-$email = $updateData['email'];
-$password = $updateData['password'];
+$username = $createData['name'];
+$email = $createData['email'];
+$password = $createData['password'];
 $role = 'employee';
 
 // Prepare and execute the query to check if the user exists
@@ -17,4 +17,4 @@ $result = $db->query($query, $parameters);
 
 header('Content-Type: application/json');
 
-echo json_encode(['message' => 'User updated successfully']);
+echo json_encode(['message' => 'User created successfully']);

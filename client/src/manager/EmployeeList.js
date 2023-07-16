@@ -24,22 +24,30 @@ const columns = [
 export default function EmployeeList() {
     const [vacationRequests, setVacationRequests] = useState([])
 
-    useEffect(() => {
-        async function employeeDelete(employeeEmail) {
-            axios
-                .delete('http://localhost:8888/delete', {
-                    email: employeeEmail,
-                })
-                .then((response) => {
-                    console.log(response)
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
-        }
-
+    async function employeeDelete(employeeEmail) {
+        console.log(employeeEmail)
         axios
-            .get('http://localhost:8888/allEmployees')
+            .delete('http://localhost:8888/delete', {
+                data: {
+                    email: employeeEmail,
+                },
+            })
+            .then((response) => {
+                console.log(response)
+                setVacationRequests((prevVacationRequests) =>
+                    prevVacationRequests.filter(
+                        (item) => item.email !== employeeEmail
+                    )
+                )
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    useEffect(() => {
+        axios
+            .delete('http://localhost:8888/allEmployees')
             .then((response) => {
                 console.log(response.data)
                 const formattedData = response.data.map((item, index) => ({

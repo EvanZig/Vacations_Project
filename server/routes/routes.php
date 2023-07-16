@@ -7,7 +7,8 @@ $routes = [
     '/login' => 'login.php',
     '/allEmployees' => 'allEmployees.php',
     '/update' => 'update.php',
-    '/create' => 'create.php'
+    '/create' => 'create.php',
+    '/delete' => 'delete.php'
 ];
 
 function missingPage()
