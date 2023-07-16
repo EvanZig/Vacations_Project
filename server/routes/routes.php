@@ -5,10 +5,10 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $routes = [
     '/' => 'main.php',
     '/login' => 'login.php',
-    '/allEmployees' => 'allEmployees.php',
-    '/update' => 'update.php',
-    '/create' => 'create.php',
-    '/delete' => 'delete.php'
+    '/allEmployees' => 'manager/allEmployees.php',
+    '/update' => 'manager/update.php',
+    '/create' => 'manager/create.php',
+    '/delete' => 'manager/delete.php'
 ];
 
 function missingPage()
