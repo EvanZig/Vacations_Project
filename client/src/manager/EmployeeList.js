@@ -76,7 +76,11 @@ export default function EmployeeList() {
 
     return (
         <>
-            <VacationNotifications />
+            <div className="topbar">
+                <VacationNotifications />
+                <span className="manager">MANAGER</span>
+            </div>
+
             <div>
                 <h2 style={{ display: 'flex', justifyContent: 'center' }}>
                     List of employees

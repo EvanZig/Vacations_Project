@@ -17,12 +17,18 @@ if ($userInfo === null) {
 } else {
 
     $userId = $userInfo['id'];
+    $username = $userInfo['username'];
 
     $query = "SELECT * FROM vacationrequests WHERE user_id = ?";
     $parameters = array($userId);
     $result = $db->query($query, $parameters);
 
+    $response = [
+        'result' => $result,
+        'username' => $username
+    ];
+
     header('Content-Type: application/json');
 
-    echo json_encode($result);
+    echo json_encode($response);
 }

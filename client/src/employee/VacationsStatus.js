@@ -35,6 +35,7 @@ const columns = [
 export default function VacationsStatus() {
     const [vacationRequests, setVacationRequests] = useState([])
     const authContext = useContext(AuthContext)
+    const [username, setUsername] = useState('')
 
     const calculateDays = (startDate, endDate) => {
         const dateFrom =
@@ -59,18 +60,21 @@ export default function VacationsStatus() {
             })
             .then((response) => {
                 console.log(response.data)
-                const formattedData = response.data.map((item, index) => ({
-                    key: index + 1,
-                    dateSubmitted: item.submissionDate,
-                    dateRequested: item.vacation_date_from,
-                    totalDays: calculateDays(
-                        item.vacation_date_from,
-                        item.vacation_date_to
-                    ),
-                    reason: item.reason,
-                    status: item.status,
-                }))
+                const formattedData = response.data.result.map(
+                    (item, index) => ({
+                        key: index + 1,
+                        dateSubmitted: item.submissionDate,
+                        dateRequested: item.vacation_date_from,
+                        totalDays: calculateDays(
+                            item.vacation_date_from,
+                            item.vacation_date_to
+                        ),
+                        reason: item.reason,
+                        status: item.status,
+                    })
+                )
                 setVacationRequests(formattedData)
+                setUsername(response.data.username)
             })
             .catch((error) => {
                 console.error(error)
@@ -79,6 +83,7 @@ export default function VacationsStatus() {
 
     return (
         <div>
+            <span className="username">{username}</span>
             <h2 style={{ display: 'flex', justifyContent: 'center' }}>
                 Vacation Requests
             </h2>
