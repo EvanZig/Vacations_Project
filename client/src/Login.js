@@ -10,6 +10,7 @@ function App() {
         password: '',
     })
     const authContext = useContext(AuthContext)
+    const [wrongCredentials, setWrongCredentials] = useState(false)
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -34,6 +35,7 @@ function App() {
                 window.localStorage.setItem('token', token)
             })
             .catch((error) => {
+                setWrongCredentials(true)
                 console.error(error)
             })
     }
@@ -75,7 +77,17 @@ function App() {
                         name="password"
                         value={loginCredentials.password}
                         onChange={handleInputChange}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                submitLogin()
+                            }
+                        }}
                     />
+                    {wrongCredentials ? (
+                        <span className="errorLogin">
+                            wrong username or password
+                        </span>
+                    ) : null}
                 </Form.Item>
                 <div className="footer" style={{ marginTop: '10px' }}>
                     <Button type="primary" onClick={submitLogin}>
