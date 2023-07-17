@@ -71,7 +71,7 @@ CREATE TABLE `vacationrequests` (
 
 LOCK TABLES `vacationrequests` WRITE;
 /*!40000 ALTER TABLE `vacationrequests` DISABLE KEYS */;
-INSERT INTO `vacationrequests` VALUES (2,2,'2023-10-10','2023-12-11','2023-12-12','why not','approved'),(3,2,'2023-10-10','2023-12-12','2023-12-13','holidays','approved'),(4,2,'2023-07-16','2023-07-11','2023-07-20','a reason','rejected'),(5,2,'2023-07-16','2023-07-11','2023-07-20','brotheren','rejected'),(6,10,'2023-07-16','2023-07-12','2023-07-21','yo','approved'),(7,10,'2023-07-16','2023-07-19','2023-07-20','xD?','rejected'),(8,27,'2023-07-16','2023-07-04','2023-07-20','Holidays','rejected');
+INSERT INTO `vacationrequests` VALUES (2,2,'2023-10-10','2023-12-11','2023-12-12','Holidays','approved'),(3,2,'2023-10-10','2023-12-12','2023-12-15','Some reason','pending'),(4,2,'2023-07-16','2023-07-11','2023-07-17','Another reason','pending'),(5,2,'2023-07-16','2023-07-11','2023-07-20','Personal things','pending'),(6,10,'2023-07-16','2023-07-12','2023-07-29','Expecting a baby','pending'),(7,10,'2023-07-16','2023-07-19','2023-07-23','Champions league finals','pending'),(8,27,'2023-07-16','2023-07-04','2023-07-20','Holidays','pending');
 /*!40000 ALTER TABLE `vacationrequests` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -84,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-17  1:42:17
+-- Dump completed on 2023-07-17 12:59:32
