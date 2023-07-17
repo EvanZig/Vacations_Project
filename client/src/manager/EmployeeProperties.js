@@ -6,6 +6,7 @@ import axios from 'axios'
 import Return from '../Return'
 
 export default function EmployeeProperties() {
+    const [form] = Form.useForm()
     const [userProperties, setUserProperties] = useState({
         name: '',
         email: '',
@@ -39,7 +40,10 @@ export default function EmployeeProperties() {
                 .catch((error) => {
                     console.log(error)
                 })
-            alert('user created')
+            setTimeout(() => {
+                alert('user created')
+            }, 0)
+            form.resetFields()
         } else {
             console.log(userProperties)
             axios
@@ -55,7 +59,10 @@ export default function EmployeeProperties() {
                 .catch((error) => {
                     console.log(error)
                 })
-            alert('user updated')
+            setTimeout(() => {
+                alert('user created')
+            }, 0)
+            form.resetFields()
         }
     }
 
@@ -73,6 +80,7 @@ export default function EmployeeProperties() {
             <div style={{ width: '600px' }}>
                 <h2 style={{ textAlign: 'center' }}>User properties</h2>
                 <Form
+                    form={form}
                     style={{
                         display: 'flex',
                         flexDirection: 'column',

@@ -8,7 +8,7 @@ class Database
     {
         $dsn = "mysql:host=localhost;port=3306;dbname=epignosis_db;charset=utf8mb4";
         $username = "root";
-        $password = "";
+        $password = "123456";
         try {
             $this->connection = new PDO($dsn, $username, $password);
         } catch (PDOException $e) {
