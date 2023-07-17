@@ -74,7 +74,6 @@ $brown: #7a5d3c;
 }
 
 .textarea-reason {
-    margin-top: 20px;
     width: 300px;
     &:hover {
         @include chat-input-styles;
